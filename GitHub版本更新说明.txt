@@ -1,0 +1,39 @@
+========================================
+ 淞浔上号器 - 版本更新（GitHub + jsDelivr CDN）
+========================================
+
+【原理】
+App 启动时请求：
+  https://cdn.jsdelivr.net/gh/songxun325/sx@master/version.json
+比对 version_code，有新版本就弹窗下载安装。
+APK 也放在同一个 GitHub 仓库，走 jsDelivr CDN 分发。
+无需自己的服务器，CDN 免费、国内可访问、无 JS 挑战。
+
+【首次部署（一次性，约10分钟）】
+1. 已建好 GitHub 仓库：songxun325/sx（Public）
+2. 往仓库根目录上传 2 个文件：
+   - version.json          （本目录这份）
+   - songxun_v1.1.0.apk    （淞浔上号器/ 目录里那份，323KB）
+3. 等 1-2 分钟 CDN 生效，浏览器打开验证：
+   https://cdn.jsdelivr.net/gh/songxun325/sx@master/version.json
+   能看到 JSON 即成功。
+
+【以后每次发新版（3 步）】
+1. 修改 version.json：
+   - version_code 加 1（必须比上次大！且等于新 APK 的 versionCode）
+   - version_name 改新版本号
+   - url 改成新 APK 文件名（APK 也重命名为对应英文名，避免中文编码问题）
+   - note 写更新说明
+   - force: true=强制更新，false=可选
+2. 把新 APK 上传到仓库根目录（替换/新增同名文件）
+3. 完成，用户打开 App 即收到更新提示
+
+【重要规则】
+★ version_code 必须等于新 APK 的 versionCode
+  （打包时 AndroidManifest.xml 里 android:versionCode 要同步改）
+★ APK 文件名建议纯英文（songxun_vX.X.X.apk）
+★ 上传后 jsDelivr 缓存约 1-2 分钟，测试请稍等
+★ App 内下载到 /sdcard/淞浔上号器/update.apk 后自动拉起安装
+
+【验证命令（可选）】
+curl https://cdn.jsdelivr.net/gh/songxun325/sx@master/version.json
