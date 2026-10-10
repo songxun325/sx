@@ -1,7 +1,8 @@
 {
   "version_code": 2,
   "version_name": "1.1.0",
-  "url": "https://cdn.jsdelivr.net/gh/songxun325/sx@master/songxun_v1.1.0.apk",
+  "url_mobileqq": "https://cdn.jsdelivr.net/gh/songxun325/sx@master/songxun_v1.1.0_uninstall_qq.apk",
+  "url_tim": "https://cdn.jsdelivr.net/gh/songxun325/sx@master/songxun_v1.1.0_keep_qq.apk",
   "note": "1. 修复过滤功能\n2. 修复全游戏查询\n3. 修复资源加载",
   "force": false
 }
